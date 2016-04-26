@@ -35,5 +35,5 @@ Provide a query that shows the total sales per country. Which country's customer
 Provide a query that shows the most purchased track of 2013.
 Provide a query that shows the top 5 most purchased tracks over all.
 Provide a query that shows the top 3 best selling artists.
-Provide a query that shows the most purchased Media Type.
+Provide a query that shows the most purchased Media Type..
 
