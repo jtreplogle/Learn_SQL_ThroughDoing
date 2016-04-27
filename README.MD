@@ -37,3 +37,42 @@ Provide a query that shows the top 5 most purchased tracks over all.
 Provide a query that shows the top 3 best selling artists.
 Provide a query that shows the most purchased Media Type..
 
+1.  
+SELECT 
+Customer.FirstName || ", " || Customer.LastName AS FullName,
+CustomerId,
+Country
+FROM Customer
+WHERE Country != 'USA';
+
+2.  
+SELECT 
+Customer.FirstName || ", " || Customer.LastName AS FullName,
+Customer.Country
+FROM Customer
+WHERE Country = 'Brazil';
+
+3. 
+SELECT
+Customer.FirstName || " " || Customer.LastName AS FullName,
+Invoice.InvoiceId,
+Invoice.InvoiceDate,
+Invoice.BillingCountry,
+Customer.Country
+FROM Customer 
+INNER JOIN Invoice 
+WHERE Customer.Country = 'Brazil';
+
+4. 
+SELECT 
+Employee.FirstName || " " || Employee.LastName AS FullName,
+Employee.title
+FROM Employee
+WHERE Employee.Title = 'Sales Support Agent';
+
+5.  
+SELECT 
+DISTINCT
+Invoice.BillingCountry
+FROM Invoice
+ORDER BY Invoice.BillingCountry
