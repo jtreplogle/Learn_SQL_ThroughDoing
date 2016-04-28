@@ -97,7 +97,20 @@ Join Customer ON Invoice.CustomerId = Customer.CustomerId
 JOIN Employee ON Employee.employeeId = CUstomer.SupportRepId
 
 8.
+//Dates must be in specific form (As original input).
+SELECT 
+Invoice.CustomerId,
+Invoice.InvoiceDate,
+Total
+FROM Invoice
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2011-12-31'
 
++
+
+SELECT
+SUM(Total)
+FROM Invoice
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2011-12-31'
 
 9.
 SELECT 
