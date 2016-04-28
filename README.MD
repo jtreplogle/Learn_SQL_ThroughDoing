@@ -76,3 +76,126 @@ DISTINCT
 Invoice.BillingCountry
 FROM Invoice
 ORDER BY Invoice.BillingCountry
+
+6.
+Select
+Employee.FirstName,
+Employee.LastName, 
+InvoiceId 
+FROM Invoice 
+JOIN Customer ON Invoice.CustomerId = Customer.CustomerId 
+JOIN Employee on Customer.SupportRepId = Employee.EmployeeId
+
+7.
+SELECT 
+Invoice.Total, 
+Customer.FirstName, 
+Customer.LastName, 
+Customer.Country, Customer.SupportRepId 
+FROM Invoice 
+Join Customer ON Invoice.CustomerId = Customer.CustomerId 
+JOIN Employee ON Employee.employeeId = CUstomer.SupportRepId
+
+8.
+
+
+9.
+SELECT 
+InvoiceId, 
+Count(*) 
+Count 
+FROM InvoiceLine where InvoiceId = 37
+
+10.
+SELECT 
+InvoiceId, 
+Count(*) 
+Count 
+FROM InvoiceLine 
+GROUP By InvoiceId
+
+11.
+SELECT 
+InvoiceId, 
+Track.Name 
+FROM InvoiceLine 
+JOIN Track ON InvoiceLine.TrackId = Track.TrackId
+
+12.
+SELECT 
+InvoiceId, 
+Track.Name, 
+Artist.Name 
+FROM InvoiceLine 
+JOIN Track ON InvoiceLine.TrackId = Track.TrackId 
+JOIN Album ON Track.AlbumId = Album.AlbumId 
+JOIN Artist ON Album.ArtistId = Artist.ArtistId
+
+13.
+SELECT 
+BillingCountry, 
+Count(*) 
+Count 
+FROM Invoice 
+GROUP BY BillingCountry
+
+14.
+SELECT 
+Playlist.Name, 
+Count(*) 
+Count 
+FROM Track 
+JOIN PlaylistTrack ON PlaylistTrack.TrackId = Track.TrackId 
+JOIN Playlist ON Playlist.PlaylistId = PlaylistTrack.PlaylistId 
+GROUP BY Playlist.Name
+
+15.
+SELECT 
+Track.Name, 
+Album.Title, 
+MediaType.Name, 
+Genre.Name 
+FROM Track 
+JOIN Album ON Track.AlbumId = Album.AlbumId 
+JOIN MediaType ON MediaType.MediaTypeId = Track.MediaTypeId 
+JOIN Genre ON Genre.GenreId = Track.GenreId
+
+16.
+SELECT 
+InvoiceId, 
+Count(*) 
+Count 
+FROM InvoiceLine 
+GROUP By InvoiceId
+
+17.
+SELECT 
+Employee.LastName, 
+Employee.FirstName, 
+SUM(Invoice.Total) 
+FROM Employee 
+JOIN Customer ON Employee.EmployeeId = Customer.SupportRepId 
+JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId 
+GROUP BY EmployeeId
+
+18.
+SELECT 
+Employee.LastName, 
+Employee.FirstName, 
+SUM(Invoice.Total) 
+FROM Employee 
+JOIN Customer ON Employee.EmployeeId = Customer.SupportRepId 
+JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId 
+GROUP BY EmployeeId
+
+19.
+
+
+20.
+SELECT 
+Employee.FirstName, 
+Employee.LastName, 
+Count(*) 
+FROM Customer 
+JOIN Employee ON Employee.EmployeeID = CUstomer.SupportRepId 
+GROUP BY SupportRepId
