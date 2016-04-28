@@ -78,7 +78,7 @@ FROM Invoice
 ORDER BY Invoice.BillingCountry
 
 6.
-Select
+SELECT
 Employee.FirstName,
 Employee.LastName, 
 InvoiceId 
@@ -101,14 +101,15 @@ JOIN Employee ON Employee.employeeId = CUstomer.SupportRepId
 
 9.
 SELECT 
-InvoiceId, 
+InvoiceLine.InvoiceId, 
 Count(*) 
 Count 
-FROM InvoiceLine where InvoiceId = 37
+FROM InvoiceLine
+WHERE InvoiceId = 37
 
 10.
 SELECT 
-InvoiceId, 
+InvoiceLine.InvoiceId, 
 Count(*) 
 Count 
 FROM InvoiceLine 
@@ -116,14 +117,14 @@ GROUP By InvoiceId
 
 11.
 SELECT 
-InvoiceId, 
+InvoiceLine.InvoiceId, 
 Track.Name 
 FROM InvoiceLine 
 JOIN Track ON InvoiceLine.TrackId = Track.TrackId
 
 12.
 SELECT 
-InvoiceId, 
+InvoiceLine.InvoiceId, 
 Track.Name, 
 Artist.Name 
 FROM InvoiceLine 
@@ -133,7 +134,7 @@ JOIN Artist ON Album.ArtistId = Artist.ArtistId
 
 13.
 SELECT 
-BillingCountry, 
+Invoice.BillingCountry, 
 Count(*) 
 Count 
 FROM Invoice 
@@ -162,16 +163,15 @@ JOIN Genre ON Genre.GenreId = Track.GenreId
 
 16.
 SELECT 
-InvoiceId, 
+InvoiceLine.InvoiceId, 
 Count(*) 
 Count 
 FROM InvoiceLine 
 GROUP By InvoiceId
 
 17.
-SELECT 
-Employee.LastName, 
-Employee.FirstName, 
+SELECT
+Employee.FirstName || ", " || Employee.LastName AS FullName,  
 SUM(Invoice.Total) 
 FROM Employee 
 JOIN Customer ON Employee.EmployeeId = Customer.SupportRepId 
@@ -180,8 +180,7 @@ GROUP BY EmployeeId
 
 18.
 SELECT 
-Employee.LastName, 
-Employee.FirstName, 
+Employee.FirstName || ", " || Employee.LastName AS FullName, 
 SUM(Invoice.Total) 
 FROM Employee 
 JOIN Customer ON Employee.EmployeeId = Customer.SupportRepId 
@@ -193,8 +192,7 @@ GROUP BY EmployeeId
 
 20.
 SELECT 
-Employee.FirstName, 
-Employee.LastName, 
+Employee.FirstName || ", " || Employee.LastName AS FullName,  
 Count(*) 
 FROM Customer 
 JOIN Employee ON Employee.EmployeeID = CUstomer.SupportRepId 
