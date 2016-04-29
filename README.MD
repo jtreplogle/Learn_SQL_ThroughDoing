@@ -37,9 +37,11 @@ For each of the following exercises, provide the appropriate query. Yes, even th
 22. Provide a query that shows the most purchased track of 2013.
 23. Provide a query that shows the top 5 most purchased tracks over all.
 24. Provide a query that shows the top 3 best selling artists.
-25. Provide a query that shows the most purchased Media Type..
+25. Provide a query that shows the most purchased Media Type.
 
-1.  
+
+
+1.
 SELECT 
 Customer.FirstName || ", " || Customer.LastName AS FullName,
 CustomerId,
@@ -47,14 +49,14 @@ Country
 FROM Customer
 WHERE Country != 'USA';
 
-2.  
+2.
 SELECT 
 Customer.FirstName || ", " || Customer.LastName AS FullName,
 Customer.Country
 FROM Customer
 WHERE Country = 'Brazil';
 
-3. 
+3.
 SELECT
 Customer.FirstName || " " || Customer.LastName AS FullName,
 Invoice.InvoiceId,
@@ -65,14 +67,14 @@ FROM Customer
 INNER JOIN Invoice 
 WHERE Customer.Country = 'Brazil';
 
-4. 
+4.
 SELECT 
 Employee.FirstName || " " || Employee.LastName AS FullName,
 Employee.title
 FROM Employee
 WHERE Employee.Title = 'Sales Support Agent';
 
-5.  
+5.
 SELECT 
 DISTINCT
 Invoice.BillingCountry
@@ -219,3 +221,16 @@ Invoice.BillingCountry,
 SUM(Total) 
 FROM Invoice 
 GROUP BY BillingCountry
+
+22.
+SELECT 
+Track.Name, 
+COUNT(InvoiceLineId) AS Total 
+FROM InvoiceLine 
+JOIN Track on Track.TrackId = InvoiceLine.TrackId 
+JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId 
+GROUP BY Track.Name 
+ORDER BY Total 
+DESC LIMIT 5
+
+
