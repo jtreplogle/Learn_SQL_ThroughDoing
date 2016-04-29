@@ -222,15 +222,3 @@ SUM(Total)
 FROM Invoice 
 GROUP BY BillingCountry
 
-22.
-SELECT 
-Track.Name, 
-COUNT(InvoiceLineId) AS Total 
-FROM InvoiceLine 
-JOIN Track on Track.TrackId = InvoiceLine.TrackId 
-JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId 
-GROUP BY Track.Name 
-ORDER BY Total 
-DESC LIMIT 5
-
-
