@@ -261,7 +261,7 @@ ORDER BY Total
 DESC 
 LIMIT 5
 
-24. 
+24.  
 SELECT 
 Artist.Name, 
 COUNT(InvoiceLineId) AS NumSold 
@@ -275,7 +275,7 @@ ORDER BY NumSold
 DESC 
 LIMIT 3
 
-25. 
+25.  
 SELECT 
 MediaType.Name, 
 COUNT(InvoiceLineId) AS NumSold 
