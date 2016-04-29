@@ -205,6 +205,21 @@ INNER JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId
 GROUP BY EmployeeId
 
 19.
+SELECT 
+FirstName, 
+LastName, 
+MAX(TotalSales) 
+FROM
+(
+SELECT 
+SUM(Total) AS TotalSales, 
+Employee.LastName, 
+Employee.FirstName 
+FROM Employee 
+JOIN Customer ON Employee.EmployeeId = Customer.SupportRepId 
+JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId 
+GROUP BY EmployeeId
+)
 
 
 20.
@@ -222,3 +237,52 @@ SUM(Total)
 FROM Invoice 
 GROUP BY BillingCountry
 
+22.
+SELECT 
+Track.Name, 
+COUNT(InvoiceLineId) AS Total 
+FROM InvoiceLine 
+JOIN Track on Track.TrackId = InvoiceLine.TrackId 
+JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId 
+GROUP BY Track.Name 
+ORDER BY Total 
+DESC 
+LIMIT 5
+
+23.
+SELECT 
+Track.Name, 
+COUNT(InvoiceLineId) AS Total 
+FROM InvoiceLine 
+JOIN Track on Track.TrackId = InvoiceLine.TrackId 
+JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId 
+GROUP BY Track.Name 
+ORDER BY Total 
+DESC 
+LIMIT 5
+
+24. 
+SELECT 
+Artist.Name, 
+COUNT(InvoiceLineId) AS NumSold 
+FROM InvoiceLine 
+JOIN Track on Track.TrackId = InvoiceLine.TrackId 
+JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId 
+JOIN Album ON Album.AlbumID = Track.AlbumId 
+JOIN artist ON Artist.ArtistID = Album.ArtistId 
+GROUP BY Artist.Name 
+ORDER BY NumSold 
+DESC 
+LIMIT 3
+
+25. 
+SELECT 
+MediaType.Name, 
+COUNT(InvoiceLineId) AS NumSold 
+FROM InvoiceLine 
+JOIN Track on Track.TrackId = InvoiceLine.TrackId 
+JOIN MediaType ON MediaType.MediaTypeId = Track.MediaTypeId 
+GROUP BY MediaType.Name 
+ORDER BY NumSold 
+DESC 
+LIMIT 1
